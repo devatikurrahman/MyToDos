@@ -13,6 +13,7 @@
 		603CEBAF2B3B3F1E0007DDD6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 603CEBAE2B3B3F1E0007DDD6 /* Preview Assets.xcassets */; };
 		603E58F42B3B404C000E7D6E /* ToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603E58F32B3B404C000E7D6E /* ToDo.swift */; };
 		603E58F62B3B4688000E7D6E /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603E58F52B3B4688000E7D6E /* DataStore.swift */; };
+		6097E6652B3DF97B0078F764 /* ToDoFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6097E6642B3DF97B0078F764 /* ToDoFormViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		603CEBAE2B3B3F1E0007DDD6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		603E58F32B3B404C000E7D6E /* ToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDo.swift; sourceTree = "<group>"; };
 		603E58F52B3B4688000E7D6E /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
+		6097E6642B3DF97B0078F764 /* ToDoFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoFormViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 			children = (
 				603CEBA72B3B3F1B0007DDD6 /* MyToDosApp.swift */,
 				603CEBA92B3B3F1B0007DDD6 /* ContentView.swift */,
+				6097E6642B3DF97B0078F764 /* ToDoFormViewModel.swift */,
 				603E58F32B3B404C000E7D6E /* ToDo.swift */,
 				603E58F52B3B4688000E7D6E /* DataStore.swift */,
 				603CEBAB2B3B3F1E0007DDD6 /* Assets.xcassets */,
@@ -147,6 +150,7 @@
 				603E58F42B3B404C000E7D6E /* ToDo.swift in Sources */,
 				603CEBAA2B3B3F1B0007DDD6 /* ContentView.swift in Sources */,
 				603CEBA82B3B3F1B0007DDD6 /* MyToDosApp.swift in Sources */,
+				6097E6652B3DF97B0078F764 /* ToDoFormViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

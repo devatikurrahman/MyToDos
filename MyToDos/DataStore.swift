@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class ToDoListViewModel: ObservableObject {
+final class DataStore: ObservableObject {
     @Published var toDoList:[ToDo] = []
     
     init() {

@@ -12,7 +12,7 @@ struct MyToDosApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(ToDoListViewModel())
+                .environmentObject(DataStore())
         }
     }
 }

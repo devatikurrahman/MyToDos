@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject var viewModel: ToDoListViewModel
+    @EnvironmentObject var viewModel: DataStore
     
     var body: some View {
         NavigationStack {
-            List() {
+            List {
                 ForEach(viewModel.toDoList) { toDo in
                     Button {
                         
@@ -35,13 +35,9 @@ struct ContentView: View {
                     Button("My ToDos") {
                         
                     } label: {
-                        <#code#>
+                        Image(systemName: "plus.circle.fill")
                     }
-                        .font(.largeTitle)
-                        .foregroundColor(.red)
                 }
-                
-                
             }
         }
     }
@@ -49,4 +45,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+        .environmentObject(DataStore())
 }

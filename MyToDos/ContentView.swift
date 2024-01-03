@@ -9,13 +9,14 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var viewModel: DataStore
+    @State private var modalType: ModalType? = nil
     
     var body: some View {
         NavigationStack {
             List {
                 ForEach(viewModel.toDoList) { toDo in
                     Button {
-                        
+                        modalType = .update(toDo)
                     } label: {
                         Text(toDo.name)
                             .font(.title3)
@@ -32,14 +33,15 @@ struct ContentView: View {
                         .foregroundColor(.red)
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("My ToDos") {
-                        
+                    Button() {
+                        modalType = .new
                     } label: {
                         Image(systemName: "plus.circle.fill")
                     }
                 }
             }
         }
+        .sheet(item: $modalType) { $0 }
     }
 }
 

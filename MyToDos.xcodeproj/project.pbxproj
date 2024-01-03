@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6016761F2B45D0380008E970 /* ModalType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6016761E2B45D0380008E970 /* ModalType.swift */; };
 		603CEBA82B3B3F1B0007DDD6 /* MyToDosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603CEBA72B3B3F1B0007DDD6 /* MyToDosApp.swift */; };
 		603CEBAA2B3B3F1B0007DDD6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603CEBA92B3B3F1B0007DDD6 /* ContentView.swift */; };
 		603CEBAC2B3B3F1E0007DDD6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 603CEBAB2B3B3F1E0007DDD6 /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6016761E2B45D0380008E970 /* ModalType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalType.swift; sourceTree = "<group>"; };
 		603CEBA42B3B3F1B0007DDD6 /* MyToDos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyToDos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		603CEBA72B3B3F1B0007DDD6 /* MyToDosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyToDosApp.swift; sourceTree = "<group>"; };
 		603CEBA92B3B3F1B0007DDD6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 				6097E6642B3DF97B0078F764 /* ToDoFormViewModel.swift */,
 				6097E6662B3DFA720078F764 /* ToDoFormView.swift */,
 				603E58F32B3B404C000E7D6E /* ToDo.swift */,
+				6016761E2B45D0380008E970 /* ModalType.swift */,
 				603E58F52B3B4688000E7D6E /* DataStore.swift */,
 				603CEBAB2B3B3F1E0007DDD6 /* Assets.xcassets */,
 				603CEBAD2B3B3F1E0007DDD6 /* Preview Content */,
@@ -150,6 +153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6097E6672B3DFA720078F764 /* ToDoFormView.swift in Sources */,
+				6016761F2B45D0380008E970 /* ModalType.swift in Sources */,
 				603E58F62B3B4688000E7D6E /* DataStore.swift in Sources */,
 				603E58F42B3B404C000E7D6E /* ToDo.swift in Sources */,
 				603CEBAA2B3B3F1B0007DDD6 /* ContentView.swift in Sources */,

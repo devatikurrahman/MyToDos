@@ -20,10 +20,10 @@ struct ToDoFormView: View {
                     Toggle("Completed", isOn: $formVM.completed)
                 }
             }
+            .navigationTitle("ToDo")
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarItems(leading: cancelButton, trailing: updateSaveButton)
         }
-        .navigationTitle("ToDo")
-        .navigationBarTitleDisplayMode(.inline)
-        .navigationBarItems(leading: cancelButton, trailing: updateSaveButton)
     }
 }
 
@@ -35,7 +35,7 @@ extension ToDoFormView {
     }
     
     func addToDo() {
-        let toDo = ToDo(id: formVM.id!, name: formVM.name, completed: formVM.completed)
+        let toDo = ToDo(name: formVM.name)
         dataStore.addToDo(toDo)
         presentationMode.wrappedValue.dismiss()
     }

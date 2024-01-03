@@ -15,7 +15,7 @@ struct ToDo: Identifiable, Codable {
     static var sampleData: [ToDo] {
         [
             ToDo(name: "Get Lunches"),
-            ToDo(name: "Meeting at afternoon"),
+            ToDo(name: "Meeting at afternoon", completed: true),
             ToDo(name: "Dinner with family friends")
         ]
     }

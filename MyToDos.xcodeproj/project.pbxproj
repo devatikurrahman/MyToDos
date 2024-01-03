@@ -42,6 +42,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		601676202B45F7C20008E970 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				603CEBA92B3B3F1B0007DDD6 /* ContentView.swift */,
+				6097E6662B3DFA720078F764 /* ToDoFormView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		601676212B45F7CC0008E970 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6016761E2B45D0380008E970 /* ModalType.swift */,
+				603E58F32B3B404C000E7D6E /* ToDo.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		601676222B45F7D70008E970 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				603E58F52B3B4688000E7D6E /* DataStore.swift */,
+				6097E6642B3DF97B0078F764 /* ToDoFormViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		603CEB9B2B3B3F1B0007DDD6 = {
 			isa = PBXGroup;
 			children = (
@@ -62,12 +89,9 @@
 			isa = PBXGroup;
 			children = (
 				603CEBA72B3B3F1B0007DDD6 /* MyToDosApp.swift */,
-				603CEBA92B3B3F1B0007DDD6 /* ContentView.swift */,
-				6097E6642B3DF97B0078F764 /* ToDoFormViewModel.swift */,
-				6097E6662B3DFA720078F764 /* ToDoFormView.swift */,
-				603E58F32B3B404C000E7D6E /* ToDo.swift */,
-				6016761E2B45D0380008E970 /* ModalType.swift */,
-				603E58F52B3B4688000E7D6E /* DataStore.swift */,
+				601676202B45F7C20008E970 /* Views */,
+				601676212B45F7CC0008E970 /* Models */,
+				601676222B45F7D70008E970 /* ViewModels */,
 				603CEBAB2B3B3F1E0007DDD6 /* Assets.xcassets */,
 				603CEBAD2B3B3F1E0007DDD6 /* Preview Content */,
 			);

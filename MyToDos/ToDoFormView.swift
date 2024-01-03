@@ -49,7 +49,7 @@ extension ToDoFormView {
     var updateSaveButton: some View {
         Button(formVM.updating ? "Update" : "Save",
                action: formVM.updating ? updateToDo : addToDo)
-        .disabled(formVM.updating)
+        .disabled(formVM.isDisabled)
     }
 }
 

@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject var viewModel: DataStore
+    @EnvironmentObject var dataStore: DataStore
     @State private var modalType: ModalType? = nil
     
     var body: some View {
         NavigationStack {
             List {
-                ForEach(viewModel.toDoList) { toDo in
+                ForEach(dataStore.toDoList) { toDo in
                     Button {
                         modalType = .update(toDo)
                     } label: {
@@ -24,6 +24,7 @@ struct ContentView: View {
                             .foregroundColor(toDo.completed ? .green : Color(.label))
                     }
                 }
+                .onDelete(perform: dataStore.deleteToDo)
             }
             .listStyle(InsetGroupedListStyle())
             .toolbar {

@@ -15,15 +15,16 @@ final class DataStore: ObservableObject {
     }
     
     func addToDo(_ toDo: ToDo) {
-        
+        toDoList.append(toDo)
     }
     
     func updateToDo(_ toDo: ToDo) {
-        
+        guard let index = toDoList.firstIndex(where: { $0.id == toDo.id}) else { return }
+        toDoList[index] = toDo
     }
     
-    func deleteToDo(at indexSet: ToDo) {
-        
+    func deleteToDo(at indexSet: IndexSet) {
+        toDoList.remove(atOffsets: indexSet)
     }
     
     func loadToDo() {

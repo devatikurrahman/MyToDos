@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import TipKit
 
 @main
 struct MyToDosApp: App {
@@ -14,5 +15,8 @@ struct MyToDosApp: App {
             ContentView()
                 .environmentObject(DataStore())
         }
+    }
+    init() {
+        try? Tips.configure()
     }
 }

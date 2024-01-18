@@ -16,6 +16,7 @@
 		603E58F62B3B4688000E7D6E /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603E58F52B3B4688000E7D6E /* DataStore.swift */; };
 		6089F51D2B599C23007BE0A7 /* CreateToDoTips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6089F51C2B599C23007BE0A7 /* CreateToDoTips.swift */; };
 		6089F5202B59BC66007BE0A7 /* FileManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6089F51F2B59BC66007BE0A7 /* FileManager+Extension.swift */; };
+		6089F5222B59C7C1007BE0A7 /* ToDoError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6089F5212B59C7C1007BE0A7 /* ToDoError.swift */; };
 		6097E6652B3DF97B0078F764 /* ToDoFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6097E6642B3DF97B0078F764 /* ToDoFormViewModel.swift */; };
 		6097E6672B3DFA720078F764 /* ToDoFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6097E6662B3DFA720078F764 /* ToDoFormView.swift */; };
 /* End PBXBuildFile section */
@@ -31,6 +32,7 @@
 		603E58F52B3B4688000E7D6E /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		6089F51C2B599C23007BE0A7 /* CreateToDoTips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateToDoTips.swift; sourceTree = "<group>"; };
 		6089F51F2B59BC66007BE0A7 /* FileManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extension.swift"; sourceTree = "<group>"; };
+		6089F5212B59C7C1007BE0A7 /* ToDoError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoError.swift; sourceTree = "<group>"; };
 		6097E6642B3DF97B0078F764 /* ToDoFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoFormViewModel.swift; sourceTree = "<group>"; };
 		6097E6662B3DFA720078F764 /* ToDoFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoFormView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -60,6 +62,7 @@
 			children = (
 				6016761E2B45D0380008E970 /* ModalType.swift */,
 				603E58F32B3B404C000E7D6E /* ToDo.swift */,
+				6089F5212B59C7C1007BE0A7 /* ToDoError.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 			files = (
 				6097E6672B3DFA720078F764 /* ToDoFormView.swift in Sources */,
 				6089F51D2B599C23007BE0A7 /* CreateToDoTips.swift in Sources */,
+				6089F5222B59C7C1007BE0A7 /* ToDoError.swift in Sources */,
 				6016761F2B45D0380008E970 /* ModalType.swift in Sources */,
 				603E58F62B3B4688000E7D6E /* DataStore.swift in Sources */,
 				603E58F42B3B404C000E7D6E /* ToDo.swift in Sources */,

@@ -41,7 +41,7 @@ final class DataStore: ObservableObject {
                 do {
                     toDoList = try decoder.decode([ToDo].self, from: data)
                 } catch {
-                    print(error.localizedDescription)
+                    print(ToDoError.decodingError.localizedDescription)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
@@ -62,7 +62,7 @@ final class DataStore: ObservableObject {
                 }
             }
         } catch {
-            print(error.localizedDescription)
+            print(ToDoError.encodingError.localizedDescription)
         }
     }
 }

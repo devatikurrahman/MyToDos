@@ -9,8 +9,10 @@ import Foundation
 import Combine
 
 final class DataStore: ObservableObject {
-    @Published var toDoList:[ToDo] = []
-    @Published var appError: ErrorType? = nil
+    //@Published var toDoList:[ToDo] = []
+    var toDoList = CurrentValueSubject<[ToDo], Never>([])
+    //@Published var appError: ErrorType? = nil
+    var appError = CurrentValueSubject<ErrorType?, Never>(nil)
     
     var addToDo = PassthroughSubject<ToDo, Never>()
     var updateToDo = PassthroughSubject<ToDo, Never>()
@@ -30,6 +32,13 @@ final class DataStore: ObservableObject {
     }
     
     func addSubscriptions() {
+        
+        appError
+            .sink { _ in
+                self.objectWillChange.send()
+            }
+            .store(in: &subscriptions)
+        
         loadToDo
             .filter { FileManager.default.fileExists(atPath: $0.path) }
             .tryMap { url in
@@ -45,27 +54,30 @@ final class DataStore: ObservableObject {
                     toDosSubscription()
                 case .failure(let error):
                     if error is ToDoError {
-                        appError = ErrorType(error: error as! ToDoError)
+                        appError.send(ErrorType(error: error as! ToDoError))
                     } else {
-                        appError = ErrorType(error: ToDoError.decodingError)
+                        appError.send(ErrorType(error: ToDoError.decodingError))
                         toDosSubscription()
                     }
                 }
             } receiveValue: { (toDos) in
-                self.toDoList = toDos
+                self.objectWillChange.send()
+                self.toDoList.value = toDos
             }
             .store(in: &subscriptions)
         
         
         updateToDo.sink { [unowned self] toDo in
-            guard let index = toDoList.firstIndex(where: { $0.id == toDo.id}) else { return }
-            toDoList[index] = toDo
+            guard let index = toDoList.value.firstIndex(where: { $0.id == toDo.id}) else { return }
+            self.objectWillChange.send()
+            toDoList.value[index] = toDo
             //saveToDos()
         }
         .store(in: &subscriptions)
         
         deleteToDo.sink { [unowned self] indexSet in
-            toDoList.remove(atOffsets: indexSet)
+            self.objectWillChange.send()
+            toDoList.value.remove(atOffsets: indexSet)
             //saveToDos()
         }
         .store(in: &subscriptions)
@@ -73,7 +85,7 @@ final class DataStore: ObservableObject {
     
     
     func toDosSubscription() {
-        $toDoList
+        toDoList
             .subscribe(on: DispatchQueue(label: "background queue"))
             .receive(on: DispatchQueue.main)
             .dropFirst()
@@ -87,9 +99,9 @@ final class DataStore: ObservableObject {
                     print("Saving Completed")
                 case .failure(let error):
                     if error is ToDoError {
-                        appError = ErrorType(error: error as! ToDoError)
+                        appError.send(ErrorType(error: error as! ToDoError))
                     } else {
-                        appError = ErrorType(error: ToDoError.encodingError)
+                        appError.send(ErrorType(error: ToDoError.encodingError))
                     }
                 }
             } receiveValue: { _ in
@@ -100,7 +112,8 @@ final class DataStore: ObservableObject {
         
         
         addToDo.sink { [unowned self] toDo in
-            toDoList.append(toDo)
+            self.objectWillChange.send()
+            toDoList.value.append(toDo)
             //saveToDos()
         }
         .store(in: &subscriptions)

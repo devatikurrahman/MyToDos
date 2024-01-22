@@ -14,6 +14,9 @@ struct MyToDosApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(DataStore())
+                .onAppear {
+                    DebugFIles.print(URL.documentsDirectory.path(), type: .info, extended: true)
+                }
         }
     }
     init() {

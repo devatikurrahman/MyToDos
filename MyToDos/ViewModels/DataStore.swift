@@ -50,7 +50,8 @@ final class DataStore: ObservableObject {
             .sink { [unowned self] completion in
                 switch completion {
                 case .finished:
-                    print("Loading Completed")
+                    //print("Loading Completed")
+                    DebugFIles.print("Loading ToDos from documents directory", type: .info, extended: true)
                     toDosSubscription()
                 case .failure(let error):
                     if error is ToDoError {

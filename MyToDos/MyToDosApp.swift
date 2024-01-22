@@ -7,15 +7,19 @@
 
 import SwiftUI
 import TipKit
+import OSLog
 
 @main
 struct MyToDosApp: App {
+    let logger = Logger(subsystem: "com.mycompany.MyToDos", category: "MyToDosApp")
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(DataStore())
                 .onAppear {
-                    DebugFIles.print(URL.documentsDirectory.path(), type: .info, extended: true)
+                    //DebugFIles.print(URL.documentsDirectory.path(), type: .info, extended: true)
+                    logger.info("\(URL.documentsDirectory.path())")
                 }
         }
     }

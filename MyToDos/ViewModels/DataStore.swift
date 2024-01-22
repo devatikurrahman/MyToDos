@@ -7,8 +7,11 @@
 
 import Foundation
 import Combine
+import OSLog
 
 final class DataStore: ObservableObject {
+    let logger = Logger(subsystem: "com.mycompany.MyToDos", category: "DataStore")
+    
     //@Published var toDoList:[ToDo] = []
     var toDoList = CurrentValueSubject<[ToDo], Never>([])
     //@Published var appError: ErrorType? = nil
@@ -51,7 +54,8 @@ final class DataStore: ObservableObject {
                 switch completion {
                 case .finished:
                     //print("Loading Completed")
-                    DebugFIles.print("Loading ToDos from documents directory", type: .info, extended: true)
+                    //DebugFIles.print("Loading ToDos from documents directory", type: .info, extended: true)
+                    logger.info("Loading ToDos from documents directory")
                     toDosSubscription()
                 case .failure(let error):
                     if error is ToDoError {

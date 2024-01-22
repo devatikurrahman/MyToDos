@@ -6,10 +6,12 @@
 //
 
 import Foundation
-
-let fileName = "ToDos.json"
+import OSLog
 
 extension FileManager {
+    static let fileName = "ToDos.json"
+    static let logger = Logger.fileManager
+    
     static var docDirURL: URL {
         return Self.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     }
@@ -19,6 +21,7 @@ extension FileManager {
         do {
             try contents.write(to: url, atomically: true, encoding: .utf8)
         } catch {
+            Self.logger.error("\(error.localizedDescription)")
             completion(.saveError)
         }
     }
@@ -29,6 +32,7 @@ extension FileManager {
             let data = try Data(contentsOf: url)
             completion(.success(data))
         } catch {
+            Self.logger.error("\(error.localizedDescription)")
             completion(.failure(.readError))
         }
     }

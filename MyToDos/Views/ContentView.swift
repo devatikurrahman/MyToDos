@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import OSLog
 
 struct ContentView: View {
+    let logger = Logger.myToDosApp
+    
     @EnvironmentObject var dataStore: DataStore
     @State private var modalType: ModalType? = nil
     

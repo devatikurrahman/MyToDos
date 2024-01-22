@@ -10,7 +10,8 @@ import Combine
 import OSLog
 
 final class DataStore: ObservableObject {
-    let logger = Logger(subsystem: "com.mycompany.MyToDos", category: "DataStore")
+    //let logger = Logger(subsystem: "com.mycompany.MyToDos", category: "DataStore")
+    let logger = Logger.dataStore
     
     //@Published var toDoList:[ToDo] = []
     var toDoList = CurrentValueSubject<[ToDo], Never>([])
@@ -77,6 +78,7 @@ final class DataStore: ObservableObject {
             self.objectWillChange.send()
             toDoList.value[index] = toDo
             //saveToDos()
+            logger.info("ToDo updated")
         }
         .store(in: &subscriptions)
         
@@ -84,6 +86,7 @@ final class DataStore: ObservableObject {
             self.objectWillChange.send()
             toDoList.value.remove(atOffsets: indexSet)
             //saveToDos()
+            logger.info("ToDo deleted")
         }
         .store(in: &subscriptions)
     }
@@ -120,6 +123,7 @@ final class DataStore: ObservableObject {
             self.objectWillChange.send()
             toDoList.value.append(toDo)
             //saveToDos()
+            logger.info("ToDo added")
         }
         .store(in: &subscriptions)
     }

@@ -11,7 +11,8 @@ import OSLog
 
 @main
 struct MyToDosApp: App {
-    let logger = Logger(subsystem: "com.mycompany.MyToDos", category: "MyToDosApp")
+    //let logger = Logger(subsystem: "com.mycompany.MyToDos", category: "MyToDosApp")
+    let logger = Logger.myToDosApp
     
     var body: some Scene {
         WindowGroup {

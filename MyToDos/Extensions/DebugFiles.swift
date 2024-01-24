@@ -7,12 +7,12 @@
 
 import Foundation
 
-public enum DebugFIles: String {
+public enum DebugFiles: String {
     case info = "🍎"
     case error = "❌"
     
     public static func print(_ items: Any ...,
-                             type: DebugFIles,
+                             type: DebugFiles,
                              extended: Bool = false,
                              fileID: String = #fileID,
                              function: String = #function,

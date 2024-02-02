@@ -8,7 +8,7 @@
 import SwiftUI
 import OSLog
 
-struct ContentView: View {
+struct ToDoListView: View {
     let logger = Logger.myToDosApp
     
     @EnvironmentObject var dataStore: DataStore
@@ -53,6 +53,6 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    ToDoListView()
         .environmentObject(DataStore())
 }

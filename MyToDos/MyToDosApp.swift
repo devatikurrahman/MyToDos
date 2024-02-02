@@ -16,7 +16,7 @@ struct MyToDosApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ToDoListView()
                 .environmentObject(DataStore())
                 .onAppear {
                     //DebugFIles.print(URL.documentsDirectory.path(), type: .info, extended: true)

@@ -9,7 +9,7 @@ import Foundation
 import Combine
 import OSLog
 
-final class DataStore: ObservableObject {
+final class DataStoreCombine: ObservableObject {
     //let logger = Logger(subsystem: "com.mycompany.MyToDos", category: "DataStore")
     let logger = Logger.dataStore
     

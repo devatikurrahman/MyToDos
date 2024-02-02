@@ -12,12 +12,13 @@ import OSLog
 @main
 struct MyToDosApp: App {
     //let logger = Logger(subsystem: "com.mycompany.MyToDos", category: "MyToDosApp")
-    let logger = Logger.myToDosApp
+    @State private var dataStore = DataStore()
     
     var body: some Scene {
+        let logger = Logger.myToDosApp
         WindowGroup {
             ToDoListView()
-                .environmentObject(DataStore())
+                .environment(dataStore)
                 .onAppear {
                     //DebugFIles.print(URL.documentsDirectory.path(), type: .info, extended: true)
                     logger.info("\(URL.documentsDirectory.path())")

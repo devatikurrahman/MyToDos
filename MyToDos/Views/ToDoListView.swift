@@ -5,54 +5,101 @@
 //  Created by Atikur Rahman on 12/26/23.
 //
 
+
 import SwiftUI
-import OSLog
 
 struct ToDoListView: View {
-    let logger = Logger.myToDosApp
-    
-    @EnvironmentObject var dataStore: DataStore
-    @State private var modalType: ModalType? = nil
-    
+    @Environment(DataStore.self) var dataStore
+    @State private var newToDoText = ""
+    @State private var newToDoAlert = false
+    @FocusState var focusedField: Bool?
     var body: some View {
+        @Bindable var dataStore = dataStore
         NavigationStack {
-            List {
-                ForEach(dataStore.toDoList.value) { toDo in
-                    Button {
-                        modalType = .update(toDo)
-                    } label: {
-                        Text(toDo.name)
+            List() {
+                ForEach($dataStore.filteredToDos) { $toDo in
+                    TextField(toDo.name, text: $toDo.name)
                             .font(.title3)
-                            .strikethrough(toDo.completed)
-                            .foregroundColor(toDo.completed ? .green : Color(.label))
+                            .foregroundStyle(toDo.completed ? .green : Color(.label))
+                            .focused($focusedField, equals: true)
+                            .overlay {
+                                Rectangle()
+                                    .fill(Color.green)
+                                    .frame(height: 1)
+                                    .opacity(toDo.completed ? 1 : 0)
+                            }
+                            .onSubmit {
+                                dataStore.updateToDo(toDo)
+                            }
+                    .swipeActions {
+                        Button(role: .destructive) {
+                            withAnimation {
+                                dataStore.deleteToDo(toDo)
+                            }
+                        } label: {
+                            Label("Delete", systemImage: "trash")
+                        }
+                    }
+                    .swipeActions(edge: .leading) {
+                        Button {
+                            toDo.completed.toggle()
+                            dataStore.updateToDo(toDo)
+                        } label: {
+                            Text(toDo.completed ? "Remove Completion" : "Completed")
+                        }.tint(.teal)
                     }
                 }
-                .onDelete(perform: dataStore.deleteToDo.send)
             }
-            .listStyle(InsetGroupedListStyle())
+            .listStyle(.insetGrouped)
+            .navigationTitle("My ToDos")
             .toolbar {
-                ToolbarItem(placement: .principal) {
-                    Text("My ToDos")
-                        .font(.largeTitle)
-                        .foregroundColor(.red)
+                ToolbarItemGroup(placement: .keyboard) {
+                    Spacer()
+                    Button {
+                        focusedField = nil
+                    } label: {
+                        Image(systemName: "keyboard.chevron.compact.down")
+                    }
                 }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button() {
-                        modalType = .new
+                ToolbarItem {
+                    Button {
+                        newToDoAlert.toggle()
                     } label: {
                         Image(systemName: "plus.circle.fill")
                     }
                 }
             }
         }
-        .sheet(item: $modalType) { $0 }
-        .alert(item: $dataStore.appError.value) { appError in
-            Alert(title: Text("Error"), message: Text(appError.error.localizedDescription))
+        .alert("New ToDo", isPresented: $newToDoAlert) {
+            TextField("New ToDo", text: $newToDoText)
+            Button("OK") {
+                if !newToDoText.isEmpty {
+                    let newToDo = ToDo(name: newToDoText)
+                    dataStore.addToDo(newToDo)
+                    newToDoText = ""
+                }
+            }
+            Button("Cancel", role: .cancel) {}
+        } message: {
+            Text("Add a new ToDo to your list")
         }
+        .alert("File Error",
+               isPresented: $dataStore.showErrorAlert,
+               presenting: dataStore.appError) { appError in
+            appError.button
+        } message: { appError in
+            Text(appError.message)
+        }
+        .searchable(text: $dataStore.filterText, prompt:Text("Filter ToDos"))
     }
 }
 
-#Preview {
+#Preview("ToDoListView") {
     ToDoListView()
-        .environmentObject(DataStore())
+        .onAppear {
+            print(URL.documentsDirectory.path(percentEncoded: false))
+        }
+        .environment(DataStore(forPreview: true))
 }
+
+

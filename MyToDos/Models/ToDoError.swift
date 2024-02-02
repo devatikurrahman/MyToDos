@@ -5,7 +5,7 @@
 //  Created by Atikur Rahman on 1/19/24.
 //
 
-import Foundation
+import SwiftUI
 
 enum ToDoError: Error, LocalizedError {
     case saveError
@@ -27,7 +27,12 @@ enum ToDoError: Error, LocalizedError {
     }
 }
 
-struct ErrorType: Identifiable {
-    var id = UUID()
+//struct ErrorType: Identifiable {
+struct ErrorType {
+    //var id = UUID()
     let error: ToDoError
+    var message: String {
+        error.localizedDescription
+    }
+    let button = Button("OK", role: .cancel) {}
 }

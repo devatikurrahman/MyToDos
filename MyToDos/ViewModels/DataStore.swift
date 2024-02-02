@@ -21,7 +21,7 @@ final class DataStore: ObservableObject {
     var addToDo = PassthroughSubject<ToDo, Never>()
     var updateToDo = PassthroughSubject<ToDo, Never>()
     var deleteToDo = PassthroughSubject<IndexSet, Never>()
-    var loadToDo = Just(FileManager.docDirURL.appendingPathComponent(fileName))
+    var loadToDo = Just(FileManager.docDirURL.appendingPathComponent(FileManager.fileName))
     
     var subscriptions = Set<AnyCancellable>()
     
@@ -99,7 +99,7 @@ final class DataStore: ObservableObject {
             .dropFirst()
             .encode(encoder: JSONEncoder())
             .tryMap { data in
-                try data.write(to: FileManager.docDirURL.appendingPathComponent(fileName))
+                try data.write(to: FileManager.docDirURL.appendingPathComponent(FileManager.fileName))
             }
             .sink { [unowned self] completion in
                 switch completion {

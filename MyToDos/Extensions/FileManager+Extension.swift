@@ -37,6 +37,15 @@ extension FileManager {
         }
     }
     
+    func readDocument(docName: String) {
+        let url = Self.docDirURL.appendingPathComponent(docName)
+        do {
+            let data = try Data(contentsOf: url)
+        } catch {
+            Self.logger.error("\(error.localizedDescription)")
+        }
+    }
+    
     func docExist(name docName: String) -> Bool {
         fileExists(atPath: Self.docDirURL.appendingPathComponent(docName).path)
     }

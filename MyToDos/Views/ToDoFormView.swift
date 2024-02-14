@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ToDoFormView: View {
-    @EnvironmentObject var dataStore: DataStore
+    @Environment(DataStore.self) var dataStore
     @ObservedObject var formVM: ToDoFormViewModel
     @Environment(\.presentationMode) var presentationMode
     
@@ -31,13 +31,13 @@ extension ToDoFormView {
     func updateToDo() {
         let toDo = ToDo(id: formVM.id!, name: formVM.name, completed: formVM.completed)
         //dataStore.updateToDo(toDo)
-        dataStore.updateToDo.send(toDo)
+        dataStore.updateToDo(toDo)
         presentationMode.wrappedValue.dismiss()
     }
     
     func addToDo() {
         let toDo = ToDo(name: formVM.name)
-        dataStore.addToDo.send(toDo)
+        dataStore.addToDo(toDo)
         presentationMode.wrappedValue.dismiss()
     }
     
@@ -56,5 +56,5 @@ extension ToDoFormView {
 
 #Preview {
     ToDoFormView(formVM: ToDoFormViewModel())
-        .environmentObject(DataStore())
+        .environment(DataStore())
 }
